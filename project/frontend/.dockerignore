@@ -1,0 +1,5 @@
+# игнорировать каталоги node_modules
+**/node_modules
+.dockerignore
+.gitignore
+Dockerfile

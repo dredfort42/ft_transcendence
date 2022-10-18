@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  frontend:
+    build: ./
+    container_name: frontend
+    image: frontend
+    hostname: frontend
+    ports: [0.0.0.0:8086:8086]
+    restart: always
+#    env_file: [.env]
+    networks: {inception_network: {ipv4_address: 192.168.99.10}}
+    stdin_open: true
+    tty: true
+
+networks:
+  inception_network: {name: ft_transcendence, driver: bridge, ipam: {config: [{subnet: 192.168.99.0/24, gateway: "192.168.99.254"}]}}
