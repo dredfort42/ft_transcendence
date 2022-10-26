@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: postgres:13.3
+    env_file: [.env]
+    ports: [0.0.0.0:5432:5432]
+    volumes: [./db:/var/lib/postgresql/data]
+    networks: {inception_network: {ipv4_address: 192.168.99.11}}   
+
+networks:
+  inception_network: {name: ft_transcendence, driver: bridge, ipam: {config: [{subnet: 192.168.99.0/24, gateway: "192.168.99.254"}]}}
